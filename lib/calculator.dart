@@ -218,117 +218,119 @@ class _Calculator extends State<Calculator> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onPanUpdate: _deleteLast,
-              onPanEnd: _resetHasDelete,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(18.0),
-                    constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width - 20,
-                        maxHeight: double.infinity),
-                    color: Colors.black,
-                    alignment: Alignment.centerRight,
-                    child: FittedBox(
-                      fit: BoxFit.fitHeight,
-                      child: Text(
-                        input,
-                        style: TextStyle(
-                            fontSize: 80,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onPanUpdate: _deleteLast,
+                onPanEnd: _resetHasDelete,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(18.0),
+                      constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width - 20,
+                          maxHeight: double.infinity),
+                      color: Colors.black,
+                      alignment: Alignment.centerRight,
+                      child: FittedBox(
+                        fit: BoxFit.fitHeight,
+                        child: Text(
+                          input,
+                          style: TextStyle(
+                              fontSize: 80,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300),
+                        ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CalculatorButton(
+                      text: clr,
+                      hexCode: lightgreyC,
+                      colorCode: blackC,
+                      onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: '±',
+                      hexCode: lightgreyC,
+                      colorCode: blackC,
+                      onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: '%',
+                      hexCode: lightgreyC,
+                      colorCode: blackC,
+                      onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: '÷',
+                      hexCode: button1,
+                      colorCode: text1,
+                      onPressed: _onButtonPressed),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CalculatorButton(text: '7', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '8', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '9', onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: 'x',
+                      hexCode: button2,
+                      colorCode: text2,
+                      onPressed: _onButtonPressed),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CalculatorButton(text: '4', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '5', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '6', onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: '-',
+                      hexCode: button3,
+                      colorCode: text3,
+                      onPressed: _onButtonPressed),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CalculatorButton(text: '1', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '2', onPressed: _onButtonPressed),
+                  CalculatorButton(text: '3', onPressed: _onButtonPressed),
+                  CalculatorButton(
+                      text: '+',
+                      hexCode: button4,
+                      colorCode: text4,
+                      onPressed: _onButtonPressed),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CalculatorButton(
+                      text: '0', wWeight: 170, onPressed: _onButtonPressed),
+                  CalculatorButton(text: ',', onPressed: _onButtonPressed),
+                  CalculatorButton(
+                    text: '=',
+                    hexCode: orangeC,
+                    onPressed: _onButtonPressed,
                   ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CalculatorButton(
-                    text: clr,
-                    hexCode: lightgreyC,
-                    colorCode: blackC,
-                    onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: '±',
-                    hexCode: lightgreyC,
-                    colorCode: blackC,
-                    onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: '%',
-                    hexCode: lightgreyC,
-                    colorCode: blackC,
-                    onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: '÷',
-                    hexCode: button1,
-                    colorCode: text1,
-                    onPressed: _onButtonPressed),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CalculatorButton(text: '7', onPressed: _onButtonPressed),
-                CalculatorButton(text: '8', onPressed: _onButtonPressed),
-                CalculatorButton(text: '9', onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: 'x',
-                    hexCode: button2,
-                    colorCode: text2,
-                    onPressed: _onButtonPressed),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CalculatorButton(text: '4', onPressed: _onButtonPressed),
-                CalculatorButton(text: '5', onPressed: _onButtonPressed),
-                CalculatorButton(text: '6', onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: '-',
-                    hexCode: button3,
-                    colorCode: text3,
-                    onPressed: _onButtonPressed),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CalculatorButton(text: '1', onPressed: _onButtonPressed),
-                CalculatorButton(text: '2', onPressed: _onButtonPressed),
-                CalculatorButton(text: '3', onPressed: _onButtonPressed),
-                CalculatorButton(
-                    text: '+',
-                    hexCode: button4,
-                    colorCode: text4,
-                    onPressed: _onButtonPressed),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CalculatorButton(
-                    text: '0', wWeight: 170, onPressed: _onButtonPressed),
-                CalculatorButton(text: ',', onPressed: _onButtonPressed),
-                CalculatorButton(
-                  text: '=',
-                  hexCode: orangeC,
-                  onPressed: _onButtonPressed,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
